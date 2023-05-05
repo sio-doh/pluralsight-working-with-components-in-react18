@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 const EnhancedComponent = ({ darkTheme, toggleTheme }) => {
-  // const [darkTheme, setDarkTheme] = useState(true);
+  // 
   return (
     <div
       className="container"
@@ -22,11 +22,16 @@ const EnhancedComponent = ({ darkTheme, toggleTheme }) => {
 
 const withTheme = (Component) => {
   function Func(props) {
-    return <Component {...props} />;
+    const [darkTheme, setDarkTheme] = useState(true);
+    return (
+      <Component {...props} 
+        darkTheme={darkTheme} 
+        toggleTheme={() => setDarkTheme(!darkTheme)} />
+    );
   }
   return Func;
 };
 
 const App = withTheme(EnhancedComponent);
 
-export default App;
+export default withTheme(App);
