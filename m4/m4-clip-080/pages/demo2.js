@@ -20,18 +20,6 @@ const EnhancedComponent = ({ darkTheme, toggleTheme }) => {
 // TAKES IN A COMPONENT AND RETURNS THE SAME COMPONENT.
 // KIND OF LIKE "newF = () => oldF()"
 
-const withTheme = (Component) => {
-  function Func(props) {
-    const [darkTheme, setDarkTheme] = useState(true);
-    return (
-      <Component {...props} 
-        darkTheme={darkTheme} 
-        toggleTheme={() => setDarkTheme(!darkTheme)} />
-    );
-  }
-  return Func;
-};
-
 const App = withTheme(EnhancedComponent);
 
 export default withTheme(App);
