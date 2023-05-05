@@ -6,8 +6,15 @@ export default function useTheme() {
         setDarkTheme(!darkTheme);   
     };
     useDebugValue(
-        `theme:${darkTheme ? "dark" : "light"}`
-    );
+        `${darkTheme ? "dark" : "light"}`, 
+        (val) => {
+            if (val === "light") {
+                return "The theme is light";
+            } else {
+                return "The theme is dark";
+            }
+        }
+    ); 
     return {
         darkTheme, toggleTheme,
     }
