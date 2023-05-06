@@ -62,9 +62,25 @@ const Inner = ({
   );
 };
 
+const debug = false;
+
+const ToDoErrorBoundary = (props) => {
+  return (
+    <div className="single-task text-bg-danger">
+      {debug ? (
+        <b>ERROR PROCESSING ToDo: {JSON.stringify(props)}</b>
+      ) : (
+        <b>Problem displaying message</b>
+      )
+      }
+    </div>
+  );
+};
+
 const ToDo = (props) => {
   return (
     <ErrorBoundary>
+      errorUI={<ToDoErrorBoundary {...props} />}
       <Inner {...props} />
     </ErrorBoundary>
   );
