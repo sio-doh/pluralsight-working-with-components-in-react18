@@ -4,7 +4,8 @@ const ToDo = ({
   handleDelete,
   handleEdit,
   idUpdating,
-}) => {
+}) => { 
+  console.log(`ToDo: ${todoItem.id}:${todoItem.todoText}`);
   return (
     <div
       key={todoItem.id}
